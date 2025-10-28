@@ -1,0 +1,13 @@
+import React, { lazy } from 'react';
+import { ProtectedRoute } from '../../core/ProtectedRoute';
+
+const AboutPage = lazy(() => import('./AboutPage'));
+
+export const aboutRoutes = [
+  {
+    path: '/about',
+    element: <ProtectedRoute><AboutPage /></ProtectedRoute>
+  }
+];
+content_import: './AboutPage'
+content_lazy: () => import('./AboutPage'
