@@ -1,0 +1,15 @@
+import React, { lazy } from 'react';
+import ProtectedRoute from '../../components/ProtectedRoute';
+import SupportDashboard from './SupportDashboard';
+import TicketDetails from './TicketDetails';
+
+export const supportRoutes = [
+  {
+    path: '/support',
+    element: <ProtectedRoute><SupportDashboard /></ProtectedRoute>
+  },
+  {
+    path: '/support/ticket/:id',
+    element: <ProtectedRoute><TicketDetails /></ProtectedRoute>
+  }
+];
