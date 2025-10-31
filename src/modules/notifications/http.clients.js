@@ -23,6 +23,12 @@ const ipStackClient = create({baseURL:window.runtimeConfig.VITE_IPSTACK_API});
 const uploadClient = createApiClient(window.runtimeConfig.VITE_UPLOAD_API_END_POINT);
 const paymentsWeb3Client = createApiClient(window.runtimeConfig.VITE_WEB3_API_END_POINT);
 
+// WebSocket Client
+const createWebSocketClient = (baseURL) => {
+    return new WebSocket(baseURL);
+};
+
+const websocketClient = createWebSocketClient(window.runtimeConfig.VITE_WEBSOCKET_NOTIFICATIONS_URL);
 
 const APP_TYPE = window.runtimeConfig.VITE_WALLET_TYPE;
 
@@ -63,4 +69,5 @@ export {
     ipStackClient,
     uploadClient,
     paymentsWeb3Client,
+    websocketClient // Export WebSocket client
 };
