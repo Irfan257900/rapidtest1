@@ -9,6 +9,8 @@ import NumericText from "../../core/shared/numericText";
 import AppDefaults from "../../utils/app.config";
 import AppAlert from "../../core/shared/appAlert";
 import NoAccounts from "./noAccounts";
+import SummaryGraph from "./banks.graph";
+import CustomButton from "../../core/button/button";
 
 const BanksDashboard = () => {
   const navigate = useNavigate();
@@ -27,6 +29,10 @@ const BanksDashboard = () => {
   const withdrawFiat = useCallback(() => {
     navigate("/banks/withdraw");
   }, []);
+  const handleExportClick = () => {
+    // Implement bank-specific export logic here
+    alert("Exporting transactions for this bank...");
+  };
   return (
     <div>
       {loading && <PaymentsDashboardLoader />}
@@ -121,6 +127,17 @@ const BanksDashboard = () => {
                                     </div> */}
                 </div>
               </div>
+            </div>
+             <div className="mb-7">
+              <div className="flex justify-between items-center">
+                <h1 className="text-2xl text-titleColor font-semibold mb-2">
+                  Transaction Summary
+                </h1>
+                <CustomButton type="primary" onClick={handleExportClick}>
+                  Quick Export
+                </CustomButton>
+              </div>
+              <SummaryGraph customerInfo={useSelector((store) => store.userConfig.details)} />
             </div>
           <div className="mt-7">
             <RecentTransactions />
